@@ -49,7 +49,7 @@ public class Shirt : Clothing
                 step++;
                 Debug.Log("Success, move to step " + step);
                 //load transition cloud puff
-                ActivateModel(step);    //load next model, LEFT ORIENTATION
+                ActivateModel(1);    //load next model, LEFT ORIENTATION
                 //load success SFX puff
                 leftFoldedFirst = true;
             }
@@ -60,7 +60,7 @@ public class Shirt : Clothing
                 Debug.Log("Success, move to step " + step);
 
                 //load transition cloud puff
-                ActivateModel(step);//load next model, RIGHT ORIENTATION
+                ActivateModel(2);//load next model, RIGHT ORIENTATION
                 //load success SFX puff
                 leftFoldedFirst = false;
             }
@@ -91,7 +91,7 @@ public class Shirt : Clothing
                 step++;
                 Debug.Log("Success, move to step " + step);
                 //load transition cloud puff
-                ActivateModel(step);    //load next model, RIGHT ORIENTATION
+                ActivateModel(3);    //load next model, RIGHT ORIENTATION
                 //load success SFX puff
             }
 
@@ -121,7 +121,7 @@ public class Shirt : Clothing
                 step++;
                 Debug.Log("Success, move to step " + step);
                 //load transition cloud puff
-                ActivateModel(step);    //load next model, LEFT ORIENTATION
+                ActivateModel(4);    //load next model, LEFT ORIENTATION
                 //load success SFX puff
 
             }
@@ -153,7 +153,7 @@ public class Shirt : Clothing
                 step++;
                 Debug.Log("DOUBLE DOWN");
                 //load transition cloud puff
-                ActivateModel(step);    //load next model, RIGHT ORIENTATION
+                ActivateModel(5);    //load next model, RIGHT ORIENTATION
                 //load success SFX puff
             }
 

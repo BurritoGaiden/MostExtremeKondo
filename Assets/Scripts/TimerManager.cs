@@ -14,6 +14,8 @@ public class TimerManager : MonoBehaviour
     public float timeLeft;
     private bool stopTime = false;
 
+    public AudioSource musicSource;
+
     private void Start()
     {
         timeLeft = totalTime;
@@ -21,6 +23,18 @@ public class TimerManager : MonoBehaviour
 
     private void Update()
     {
+        if (timeLeft > 30)
+        {
+            musicSource.pitch = 1;
+        }
+        else if (timeLeft > 10)
+        {
+            musicSource.pitch = 1.5f;
+        }
+        else if (timeLeft > 0) {
+            musicSource.pitch = 2f;
+        }
+
         if (timeLeft >= 0)
         {
             timeLeft -= Time.deltaTime;

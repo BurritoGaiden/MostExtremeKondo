@@ -14,12 +14,18 @@ public class HealthManager : MonoBehaviour
 
     private int currentHP;
 
+
     void Start()
     {
         currentHP = maxHP;
         hpBar.fillAmount = currentHP *.01f;
         //hpBar.fillAmount = .5f;
         //hPSlider.value = currentHP;
+    }
+
+    private void Update()
+    {
+        
     }
 
     public void DealDamage(int i)

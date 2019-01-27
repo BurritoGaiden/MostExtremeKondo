@@ -13,7 +13,7 @@ public class Shirt : Clothing
     private bool delay = false;
 
     public GameObject[] models;
-    public float delayTime = 1;
+    public float delayTime = .1f;
     public AudioClip successSFX;
     public AudioClip mistakeSFX;
 
@@ -189,7 +189,12 @@ public class Shirt : Clothing
 
         if (step == 3 && !delay)
         {
-            return true;
+            if (Input.GetButtonDown("Submit"))
+            {
+                //StoreShirt();   //is this necessary?
+                return true;
+            }
+            
         }
 
         return false;

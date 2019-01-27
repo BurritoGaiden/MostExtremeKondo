@@ -107,7 +107,11 @@ public class Socks : Clothing
 
         if (step == 2 && !delay)
         {
-            return true;
+            if (Input.GetButtonDown("Submit"))
+            {
+                //StoreShirt();   //is this necessary?
+                return true;
+            }
         }
 
         return false;

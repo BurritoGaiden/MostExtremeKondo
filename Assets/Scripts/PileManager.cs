@@ -5,6 +5,7 @@ using UnityEngine;
 public class PileManager : MonoBehaviour
 {
     public GameManager gMan;
+    public HealthManager hMan;
     public Item[] allItems;
 
     private Item currentItem;
@@ -26,10 +27,13 @@ public class PileManager : MonoBehaviour
 
     void DoOnSolve()
     {
-        gMan.StoreItem();
-        LoadItem(incrementer);
+        gMan.StoreItem();   //animation
+        //hMan.DealDamage(currentItem.sparkJoy);  //deal damage to health manager
+        
             
         incrementer++;
+
+        LoadItem(incrementer);
     }
 
     public void LoadItem(int i)

@@ -49,7 +49,7 @@ public class Pants : Clothing
                 step++;
                 Debug.Log("Success, move to step " + step);
                 //load transition cloud puff
-                ActivateModel(step);    //load next model, LEFT ORIENTATION
+                ActivateModel(1);    //load next model, LEFT ORIENTATION
                 //load success SFX puff
 
             }
@@ -60,7 +60,7 @@ public class Pants : Clothing
                 Debug.Log("Success, move to step " + step);
 
                 //load transition cloud puff
-                ActivateModel(step);//load next model, RIGHT ORIENTATION
+                ActivateModel(2);//load next model, RIGHT ORIENTATION
                 //load success SFX puff
 
             }
@@ -92,7 +92,7 @@ public class Pants : Clothing
                 step++;
                 Debug.Log("Success, move to step " + step);
                 //load transition cloud puff
-                ActivateModel(step);    //load next model, RIGHT ORIENTATION
+                ActivateModel(3);    //load next model, RIGHT ORIENTATION
                 //load success SFX puff
             }
 
@@ -124,7 +124,7 @@ public class Pants : Clothing
                 step++;
                 Debug.Log("DOUBLE DOWN");
                 //load transition cloud puff
-                ActivateModel(step);    //load next model, RIGHT ORIENTATION
+                ActivateModel(5);    //load next model, RIGHT ORIENTATION
                 //load success SFX puff
             }
 
@@ -150,7 +150,11 @@ public class Pants : Clothing
 
         if (step == 3 && !delay)
         {
-            return true;
+            if (Input.GetButtonDown("Submit"))
+            {
+                //StoreShirt();   //is this necessary?
+                return true;
+            }
         }
 
         return false;

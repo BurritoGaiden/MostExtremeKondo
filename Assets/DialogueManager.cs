@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour {
 
+    public Text nameText;
+    public Text dialogueText;
+
     public Queue<string> sentences;
-
-
 
     private void Start()
     {
@@ -15,6 +17,8 @@ public class DialogueManager : MonoBehaviour {
 
     public void StartDialogue(Dialogue dialogue) {
         Debug.Log("Starting convo with kondo");
+
+        nameText.text = dialogue.characterName;
 
         sentences.Clear(); //clear the list of sentences
 
@@ -36,7 +40,17 @@ public class DialogueManager : MonoBehaviour {
 
         //if there are sentences left, print the sentence into the console and then take it out of the queue
         string sentence = sentences.Dequeue();
-        Debug.Log(sentence);
+        StopAllCoroutines();
+        StartCoroutine(TypeSentence(sentence));
+        //dialogueText.text = sentence;
+    }
+
+    IEnumerator TypeSentence(string sentence) {
+        dialogueText.text = "";
+        foreach(char letter in sentence.ToCharArray()){
+            dialogueText.text += letter;
+            yield return null;
+        }
     }
 
     //prints a message

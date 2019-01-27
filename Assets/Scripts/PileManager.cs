@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class PileManager : MonoBehaviour
 {
+    public delegate void PileExpireEvent();
+    public static event PileExpireEvent pileExhausted;
+
     public GameManager gMan;
     public HealthManager hMan;
     public TimerManager tMan;
@@ -12,6 +15,8 @@ public class PileManager : MonoBehaviour
 
     private Item currentItem;
     private int incrementer = 0;
+    private List<Item> storedItems;
+    private List<Item> thrownItems;
 
     public int successfullySortedObjects;
     public int sortedObjectSuccessThreshold;
@@ -50,6 +55,8 @@ public class PileManager : MonoBehaviour
         gMan.StoreItem();   //animation
         hMan.DealDamage(currentItem.sparkJoy);  //deal damage to health manager
 
+        //storedItems.Add(currentItem);       //this adds item to all stored items at the end.
+
         remainingUnsortedObjects--;
         sortedObjectSuccessThreshold--;
         remainingObjectText.text = remainingUnsortedObjects.ToString();
@@ -57,7 +64,18 @@ public class PileManager : MonoBehaviour
 
         incrementer++;
 
-        LoadItem(incrementer);
+
+        //CHECK IF THERE'S ANOTHER ITEM
+        if (allItems[incrementer] != null)
+        {
+            LoadItem(incrementer);
+        }
+
+        else
+        {
+            pileExhausted();
+        }
+        
     }
 
     //this is called when the current item is thrown away
@@ -65,6 +83,8 @@ public class PileManager : MonoBehaviour
     {
         gMan.ThrowAwayItem();
         hMan.DealDamage(currentItem.sparkJoy);
+
+        //thrownItems.Add(currentItem);       //this tracks all thrown away Items
 
         remainingUnsortedObjects--;
         remainingObjectText.text = remainingUnsortedObjects.ToString();
@@ -99,5 +119,15 @@ public class PileManager : MonoBehaviour
     public void DoOnHealthFail() {
         //if(hMan.he)
         print("ran out of health");
+    }
+
+    public void SetCurrentItemActive(bool b)
+    {
+        currentItem.enabled = b;
+    }
+
+    public bool CheckPileRequirements()
+    {
+        return sortedObjectSuccessThreshold <= 0;
     }
 }

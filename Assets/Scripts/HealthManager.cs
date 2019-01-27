@@ -46,4 +46,14 @@ public class HealthManager : MonoBehaviour
     {
         currentHP += i;
     }
+
+    public bool isAlive()
+    {
+        if (currentHP > 0)
+        {
+            return true;
+        }
+
+        return false;
+    }
 }

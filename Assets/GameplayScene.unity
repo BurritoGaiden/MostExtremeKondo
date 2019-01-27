@@ -256,7 +256,7 @@ MonoBehaviour:
   sparkJoy: 10
   sparkJoyDeviation: 3
   sparkJoySlider: {fileID: 0}
-  backStory: {fileID: 0}
+  backStory: 
   thankYouMinHold: 3
   models:
   - {fileID: 1855198162}
@@ -272,6 +272,12 @@ MonoBehaviour:
   rotationSmoothTime: 0.12
   timeSpentExamining: 0
   diff0: 0
+--- !u!1 &97050031 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1580735863399480, guid: fbd807e79e508e44fa9489093654d1df,
+    type: 3}
+  m_PrefabInstance: {fileID: 2140456261}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &115786207
 GameObject:
   m_ObjectHideFlags: 0
@@ -819,7 +825,7 @@ MonoBehaviour:
   sparkJoy: 10
   sparkJoyDeviation: 3
   sparkJoySlider: {fileID: 0}
-  backStory: {fileID: 0}
+  backStory: 
   thankYouMinHold: 3
   models:
   - {fileID: 1168780245}
@@ -1452,7 +1458,7 @@ MonoBehaviour:
   sparkJoy: 10
   sparkJoyDeviation: 3
   sparkJoySlider: {fileID: 0}
-  backStory: {fileID: 0}
+  backStory: 
   thankYouMinHold: 3
   models:
   - {fileID: 429829650}
@@ -1574,7 +1580,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &363508910
 Transform:
   m_ObjectHideFlags: 0
@@ -1860,7 +1866,7 @@ MonoBehaviour:
   sparkJoy: -20
   sparkJoyDeviation: 3
   sparkJoySlider: {fileID: 0}
-  backStory: {fileID: 0}
+  backStory: 
   thankYouMinHold: 3
   models:
   - {fileID: 1854320050}
@@ -1957,7 +1963,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 684, y: -12}
+  m_AnchoredPosition: {x: -1465, y: -12}
   m_SizeDelta: {x: 2093.6, y: 656}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &402662610
@@ -2203,7 +2209,6 @@ GameObject:
   - component: {fileID: 424245296}
   - component: {fileID: 424245300}
   - component: {fileID: 424245299}
-  - component: {fileID: 424245298}
   - component: {fileID: 424245297}
   - component: {fileID: 424245301}
   - component: {fileID: 424245302}
@@ -2270,6 +2275,10 @@ MonoBehaviour:
   theCamera: {fileID: 534669902}
   conLeft: {fileID: 0}
   conRight: {fileID: 0}
+  textBox: {fileID: 818062765}
+  textText: {fileID: 97050031}
+  nameText: {fileID: 666684480}
+  pMan: {fileID: 930849357}
 --- !u!4 &424245295
 Transform:
   m_ObjectHideFlags: 0
@@ -2317,19 +2326,6 @@ MonoBehaviour:
   timerText: {fileID: 1864700138}
   timeLeft: 0
   musicSource: {fileID: 1050981824}
---- !u!114 &424245298
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 424245293}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d976b0d2229a4af4b8898b0f89bce654, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogue: {fileID: 0}
 --- !u!114 &424245299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3067,7 +3063,7 @@ MonoBehaviour:
   sparkJoy: 10
   sparkJoyDeviation: 3
   sparkJoySlider: {fileID: 0}
-  backStory: {fileID: 0}
+  backStory: 
   thankYouMinHold: 3
   models:
   - {fileID: 1965102672}
@@ -3618,6 +3614,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: pants_4_4 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: a763b2a9b720cf34f8f3789d48a0678e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a763b2a9b720cf34f8f3789d48a0678e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.31471837
@@ -3725,6 +3725,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbc908b2c6760214eb0f9e8a3527bebc, type: 3}
+--- !u!1 &666684480 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1316277363096194, guid: 320ddd7a535cbe849b35448bc3a1ae03,
+    type: 3}
+  m_PrefabInstance: {fileID: 1263784865}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &670254211 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100002, guid: 82640bd260453a046816380015bb3eff,
@@ -4379,6 +4385,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 811405574}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &818062765 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1524287316110954, guid: 4a2201de6dc11954ba5e3a6cdafda4eb,
+    type: 3}
+  m_PrefabInstance: {fileID: 1936033684}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &827129261
 GameObject:
   m_ObjectHideFlags: 0
@@ -4477,7 +4489,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &866528655
 Animator:
   serializedVersion: 3
@@ -4763,6 +4775,7 @@ MonoBehaviour:
   hMan: {fileID: 424245296}
   tMan: {fileID: 424245297}
   allItems: []
+  currentItem: {fileID: 0}
   successfullySortedObjects: 0
   sortedObjectSuccessThreshold: 5
   remainingUnsortedObjects: 0
@@ -5400,7 +5413,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1068886043
 Transform:
   m_ObjectHideFlags: 0
@@ -6121,7 +6134,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1263784865}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 666684480}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
@@ -6181,7 +6194,7 @@ MonoBehaviour:
   sparkJoy: -10
   sparkJoyDeviation: 3
   sparkJoySlider: {fileID: 0}
-  backStory: {fileID: 0}
+  backStory: 
   thankYouMinHold: 3
   models:
   - {fileID: 408147011}
@@ -6493,7 +6506,7 @@ MonoBehaviour:
   sparkJoy: 10
   sparkJoyDeviation: 3
   sparkJoySlider: {fileID: 0}
-  backStory: {fileID: 0}
+  backStory: This is my favorite pair of pants!
   thankYouMinHold: 3
   models:
   - {fileID: 1327432727}
@@ -8685,7 +8698,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1890519672
 Transform:
   m_ObjectHideFlags: 0
@@ -9635,7 +9648,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -39, y: -12}
+  m_AnchoredPosition: {x: -2188, y: -12}
   m_SizeDelta: {x: 1096, y: 517}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2129743267
@@ -9921,7 +9934,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 2140456261}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 97050031}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
@@ -9961,7 +9974,7 @@ MonoBehaviour:
   sparkJoy: 30
   sparkJoyDeviation: 3
   sparkJoySlider: {fileID: 0}
-  backStory: {fileID: 0}
+  backStory: I remember getting this shirt back in grade school...
   thankYouMinHold: 3
   models:
   - {fileID: 1829367857}

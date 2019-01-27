@@ -17,7 +17,7 @@ public class Item : MonoBehaviour
     public int sparkJoy;
     public int sparkJoyDeviation;
     public Slider sparkJoySlider;
-    public Text backStory;
+    public string backStory;
     public float thankYouMinHold = 3f;
 
     //public GameObject preSolveModel;

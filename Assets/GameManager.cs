@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -33,16 +34,18 @@ public class GameManager : MonoBehaviour
     public GameObject conLeft;
     public GameObject conRight;
 
+    public GameObject textBox;
+    public GameObject textText;
+    public GameObject nameText;
 
+    public PileManager pMan;
 
     public void Start()
     {
         Shirt.ClothingStepped += StepProgress;
         Pants.ClothingStepped += StepProgress;
         Socks.ClothingStepped += StepProgress;
-        Book.ClothingStepped += StepProgress;
-
-        
+        Book.ClothingStepped += StepProgress;  
     }
 
 
@@ -106,6 +109,9 @@ public class GameManager : MonoBehaviour
         goodBlip.GetComponent<Animator>().Play("Good_Blip_Flash");
         thisAnim = ObjectAnimState.ObjOut;
         currentWaitTime = waitTime;
+
+        textBox.SetActive(false);
+        textText.GetComponent<Text>().text = "";
     }
 
     public void ThrowAwayItem()
@@ -116,6 +122,9 @@ public class GameManager : MonoBehaviour
         GetComponent<AudioSource>().PlayOneShot(audioClips[1]);
         thisAnim = ObjectAnimState.ObjOut;
         currentWaitTime = waitTime;
+
+        textBox.SetActive(false);
+        textText.GetComponent<Text>().text = "";
     }
 
     public void BringInItem() {
@@ -130,6 +139,14 @@ public class GameManager : MonoBehaviour
         GetComponent<AudioSource>().PlayOneShot(audioClips[2]);
         thisAnim = ObjectAnimState.ObjIn;
         currentWaitTime = waitTime;
+
+        //if(currentObject.)
+        //bring up cons for the first actionconLeft = 
+        if (pMan.currentItem.backStory != "") {
+            textBox.SetActive(true);
+            textText.GetComponent<Text>().text = pMan.currentItem.backStory;
+            nameText.GetComponent<Text>().text = "";
+        }
     }
 
     public void GiveRandomPitch(float min, float max) {

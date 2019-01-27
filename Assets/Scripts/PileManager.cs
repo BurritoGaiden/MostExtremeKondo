@@ -13,7 +13,7 @@ public class PileManager : MonoBehaviour
     public TimerManager tMan;
     public Item[] allItems;
 
-    private Item currentItem;
+    public Item currentItem;
     private int incrementer = 0;
     private List<Item> storedItems;
     private List<Item> thrownItems;

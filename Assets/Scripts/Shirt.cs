@@ -6,7 +6,6 @@ public class Shirt : Clothing
 {
     public delegate void SolveEvent();
     public static event SolveEvent ClothingStepped;
-    //public static event SolveEvent StoreShirt;
 
     private int step = 0;
     private bool leftFoldedFirst;

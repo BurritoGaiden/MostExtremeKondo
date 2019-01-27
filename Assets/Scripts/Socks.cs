@@ -43,83 +43,84 @@ public class Socks : Clothing
 
     public override bool CheckSolveConditions()
     {
-        if (step == 0 && !delay)
+        if (!delay)
         {
-
-            if (Input.GetAxis("Horizontal") > .9f && Input.GetAxis("HorizontalTurn") < -.9f)   //LEFT-IN & RIGHT-IN
+            if (step == 0)
             {
-                step++;
-                ClothingStepped();
-                //Debug.Log("Success, move to step " + step);
-                //load transition cloud puff
-                ActivateModel(step);    //load next model, LEFT ORIENTATION
-                //load success SFX puff
+                if (Input.GetAxis("Horizontal") > .9f && Input.GetAxis("HorizontalTurn") < -.9f)   //LEFT-IN & RIGHT-IN
+                {
+                    step++;
+                    ClothingStepped();
+                    //Debug.Log("Success, move to step " + step);
+                    //load transition cloud puff
+                    ActivateModel(step);    //load next model, LEFT ORIENTATION
+                                            //load success SFX puff
+                    StartCoroutine(InputDelay());
+                }
+
+                //USER INPUTS WRONG 
+                else if (Input.GetAxis("Horizontal") < -.9f ||          //LEFT-OUT
+                         Input.GetAxis("Vertical") > .9f ||             //LEFT-UP
+                         Input.GetAxis("Vertical") < -.9f ||            //LEFT-DOWN
+                         Input.GetAxis("HorizontalTurn") > .9f ||       //RIGHT-OUT
+                         Input.GetAxis("VerticalTurn") > .9f ||         //RIGHT-UP
+                         Input.GetAxis("VerticalTurn") < -.9f)          //RIGHT-DOWN
+                {
+                    step = 0;   //return to beginning
+                                //Debug.Log("Player Mistake, return to step " + step);
+
+                    //load transition cloud puff
+                    ActivateModel(step);    //load first model
+                                            //load fail SFX buzz
+                    StartCoroutine(InputDelay());
+                }
+
 
             }
-
-            //USER INPUTS WRONG 
-            else if (Input.GetAxis("Horizontal") < -.9f ||          //LEFT-OUT
-                     Input.GetAxis("Vertical") > .9f ||             //LEFT-UP
-                     Input.GetAxis("Vertical") < -.9f ||            //LEFT-DOWN
-                     Input.GetAxis("HorizontalTurn") > .9f ||       //RIGHT-OUT
-                     Input.GetAxis("VerticalTurn") > .9f ||         //RIGHT-UP
-                     Input.GetAxis("VerticalTurn") < -.9f)          //RIGHT-DOWN
+            else if (step == 1)
             {
-                step = 0;   //return to beginning
-                //Debug.Log("Player Mistake, return to step " + step);
+                //Debug.Log(Input.GetAxis("Vertical"));
+                if (Input.GetAxis("Vertical") < -.9f && Input.GetAxis("VerticalTurn") < -.9f)   //DOUBLE-DOWN
+                {
+                    step++;
+                    ClothingStepped();
+                    //Debug.Log("DOUBLE DOWN");
+                    //load transition cloud puff
+                    ActivateModel(step);    //load next model, RIGHT ORIENTATION
+                                            //load success SFX puff
+                    StartCoroutine(InputDelay());
+                }
 
-                //load transition cloud puff
-                ActivateModel(step);    //load first model
-                //load fail SFX buzz
+                //USER INPUTS WRONG 
+                else if (Input.GetAxis("Horizontal") < -.9f ||      //LEFT-OUT
+                         Input.GetAxis("Horizontal") > .9f ||       //LEFT-IN
+                         Input.GetAxis("Vertical") > .9f ||         //LEFT-UP
+                                                                    //Input.GetAxis("Vertical") < -.9f ||        //LEFT-DOWN
+                         Input.GetAxis("HorizontalTurn") > .9f ||   //RIGHT-OUT
+                         Input.GetAxis("HorizontalTurn") < -.9f ||  //RIGHT-IN
+                         Input.GetAxis("VerticalTurn") > .9f)       //RIGHT-UP
+                                                                    //Input.GetAxis("VerticalTurn") < -.9f)      //RIGHT-DOWN
+                {
+                    step = 0;   //return to beginning
+                                //Debug.Log("Player Mistake, return to step " + step);
+                                //load transition cloud puff
+                    ActivateModel(step);    //load first model
+                                            //load fail SFX buzz
+                    StartCoroutine(InputDelay());
+                }
             }
-
-            StartCoroutine(InputDelay());
+            else if (step == 2)
+            {
+                if (Input.GetButtonDown("Submit"))
+                {
+                    //StoreShirt();   //is this necessary?
+                    return true;
+                }
+            }
         }
-        
-        if (step == 1 && !delay)
-        {
-            //Debug.Log(Input.GetAxis("Vertical"));
-            if (Input.GetAxis("Vertical") < -.9f && Input.GetAxis("VerticalTurn") < -.9f)   //DOUBLE-DOWN
-            {
-                step++;
-                ClothingStepped();
-                //Debug.Log("DOUBLE DOWN");
-                //load transition cloud puff
-                ActivateModel(step);    //load next model, RIGHT ORIENTATION
-                //load success SFX puff
-            }
-
-            //USER INPUTS WRONG 
-            else if (Input.GetAxis("Horizontal") < -.9f ||      //LEFT-OUT
-                     Input.GetAxis("Horizontal") > .9f ||       //LEFT-IN
-                     Input.GetAxis("Vertical") > .9f ||         //LEFT-UP
-                     //Input.GetAxis("Vertical") < -.9f ||        //LEFT-DOWN
-                     Input.GetAxis("HorizontalTurn") > .9f ||   //RIGHT-OUT
-                     Input.GetAxis("HorizontalTurn") < -.9f ||  //RIGHT-IN
-                     Input.GetAxis("VerticalTurn") > .9f)       //RIGHT-UP
-                     //Input.GetAxis("VerticalTurn") < -.9f)      //RIGHT-DOWN
-            {
-                step = 0;   //return to beginning
-                //Debug.Log("Player Mistake, return to step " + step);
-                //load transition cloud puff
-                ActivateModel(step);    //load first model
-                //load fail SFX buzz
-            }
-
-            StartCoroutine(InputDelay());
+        else {
+            print("still in delay");
         }
-
-        if (step == 2 && !delay)
-        {
-            if (Input.GetButtonDown("Submit"))
-            {
-                //StoreShirt();   //is this necessary?
-                return true;
-            }
-        }
-
         return false;
-
     }
-
 }

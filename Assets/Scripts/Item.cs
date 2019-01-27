@@ -11,14 +11,31 @@ public class Item : MonoBehaviour
     private float thankYouPressDuration = 0f;
 
     public bool solved = false;
-    public float sparkJoy;
-    public float sparkJoyDeviation;
+
+    public bool generateRandomSJValues;
+    public int sparkJoy;
+    public int sparkJoyDeviation;
+    public Slider sparkJoySlider;
     public Text backStory;
     public float thankYouMinHold = 3f;
+
     //public GameObject preSolveModel;
     //public GameObject postSolveModel;
 
+    private void Awake()
+    {
+        if (generateRandomSJValues)
+        {
+            GenRandomSJ();
+        }
+    }
 
+    public void GenRandomSJ()
+    {
+        Debug.Log("GenRandomSJ called");
+        sparkJoy = Mathf.RoundToInt(Random.Range(-10f, 10f));
+        sparkJoyDeviation = Mathf.RoundToInt(Random.Range(0f, 3f));
+    }
 
     public virtual bool CheckSolveConditions()
     {
@@ -66,6 +83,8 @@ public class Item : MonoBehaviour
 
     void Update()
     {
+        //sparkJoySlider.value = sparkJoy;        //temp until implement deviation style
+
         CheckThankYou();
 
         if (CheckSolveConditions())

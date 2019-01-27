@@ -13,7 +13,7 @@ public class Shirt : Clothing
     private bool delay = false;
 
     public GameObject[] models;
-    public float delayTime = 1;
+    public float delayTime = .1f;
     public AudioClip successSFX;
     public AudioClip mistakeSFX;
 
@@ -51,7 +51,7 @@ public class Shirt : Clothing
             if (Input.GetAxis("Horizontal") > .9f)   //folds left side first
             {
                 step++;
-                Debug.Log("Success, move to step " + step);
+                //Debug.Log("Success, move to step " + step);
                 ShirtStepped();
                 //load transition cloud puff
                 ActivateModel(1);    //load next model, LEFT ORIENTATION
@@ -62,7 +62,7 @@ public class Shirt : Clothing
             else if (Input.GetAxis("HorizontalTurn") < -.9f) //folds right side first
             {
                 step++;
-                Debug.Log("Success, move to step " + step);
+                //Debug.Log("Success, move to step " + step);
                 ShirtStepped();
 
                 //load transition cloud puff
@@ -79,7 +79,7 @@ public class Shirt : Clothing
                      Input.GetAxis("VerticalTurn") < -.9f)  //USER INPUTS WRONG 
             {
                 step = 0;   //return to beginning
-                Debug.Log("Player Mistake, return to step " + step);
+                //Debug.Log("Player Mistake, return to step " + step);
                 
 
                 //load transition cloud puff
@@ -96,7 +96,7 @@ public class Shirt : Clothing
             if (Input.GetAxis("HorizontalTurn") < -.9f) //folds right side
             {
                 step++;
-                Debug.Log("Success, move to step " + step);
+                //Debug.Log("Success, move to step " + step);
                 ShirtStepped();
                 //load transition cloud puff
                 ActivateModel(3);    //load next model, RIGHT ORIENTATION
@@ -113,7 +113,7 @@ public class Shirt : Clothing
                      Input.GetAxis("VerticalTurn") < -.9f)      //RIGHT-DOWN
             {
                 step = 0;   //return to beginning
-                Debug.Log("Player Mistake, return to step " + step);
+                //Debug.Log("Player Mistake, return to step " + step);
                 //load transition cloud puff
                 ActivateModel(step);    //load first model
                 //load fail SFX buzz
@@ -127,7 +127,7 @@ public class Shirt : Clothing
             if (Input.GetAxis("Horizontal") > .9f)   //folds left side  LEFT-IN
             {
                 step++;
-                Debug.Log("Success, move to step " + step);
+                //Debug.Log("Success, move to step " + step);
                 ShirtStepped();
                 //load transition cloud puff
                 ActivateModel(4);    //load next model, LEFT ORIENTATION
@@ -145,7 +145,7 @@ public class Shirt : Clothing
                      Input.GetAxis("VerticalTurn") < -.9f)      //RIGHT-DOWN
             {
                 step = 0;   //return to beginning
-                Debug.Log("Player Mistake, return to step " + step);
+                //Debug.Log("Player Mistake, return to step " + step);
                 //load transition cloud puff
                 ActivateModel(step);    //load first model
                 //load fail SFX buzz
@@ -160,7 +160,7 @@ public class Shirt : Clothing
             if (Input.GetAxis("Vertical") < -.9f && Input.GetAxis("VerticalTurn") < -.9f)   //DOUBLE-DOWN
             {
                 step++;
-                Debug.Log("DOUBLE DOWN");
+                //Debug.Log("DOUBLE DOWN");
                 ShirtStepped();
                 //load transition cloud puff
                 ActivateModel(5);    //load next model, RIGHT ORIENTATION
@@ -178,7 +178,7 @@ public class Shirt : Clothing
                      //Input.GetAxis("VerticalTurn") < -.9f)      //RIGHT-DOWN
             {
                 step = 0;   //return to beginning
-                Debug.Log("Player Mistake, return to step " + step);
+                //Debug.Log("Player Mistake, return to step " + step);
                 //load transition cloud puff
                 ActivateModel(step);    //load first model
                 //load fail SFX buzz
@@ -189,7 +189,12 @@ public class Shirt : Clothing
 
         if (step == 3 && !delay)
         {
-            return true;
+            if (Input.GetButtonDown("Submit"))
+            {
+                //StoreShirt();   //is this necessary?
+                return true;
+            }
+            
         }
 
         return false;

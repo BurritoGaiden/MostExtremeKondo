@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public GameObject currentObjectModel;
     public GameObject hand;
     public ObjectAnimState thisAnim;
+    public GameObject animeVignette;
     public float waitTime;
     public float currentWaitTime;
 
@@ -17,11 +18,14 @@ public class GameManager : MonoBehaviour
     public Transform to;
     public float speed;
 
+    public float remainingTime;
+
     // Update is called once per frame
     void Update()
     {
         if (thisAnim == ObjectAnimState.ObjOut) {
             if (currentWaitTime <= 0) {
+                animeVignette.GetComponent<Animator>().SetTrigger("StopFlash");
                 //give object model a rotation to rotate from and to
                 from = rotations[Random.Range(0, rotations.Length)];
                 currentObjectModel.transform.rotation = from.rotation;
@@ -65,9 +69,12 @@ public class GameManager : MonoBehaviour
 
                     //give object model a rotation to rotate to
                     to = rotations[Random.Range(0, rotations.Length)];
+                    animeVignette.GetComponent<Animator>().SetTrigger("StartFlash");
                 }
             }
         }
+
+        remainingTime -= Time.deltaTime;
 
         RotateModel();
         DecrementCurrentWaitTime();

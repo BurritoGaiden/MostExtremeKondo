@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Clothing : Item
 {
-    public int[] solvePattern;
-
+    //public int[] solvePattern;
+    //public delegate void SolveEvent();
+    
 
     public override bool CheckSolveConditions()
     {

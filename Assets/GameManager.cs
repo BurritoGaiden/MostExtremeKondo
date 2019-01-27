@@ -38,33 +38,27 @@ public class GameManager : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
-                    currentObject.GetComponent<Animator>().SetTrigger("FlyOut");
-                    hand.GetComponent<Animator>().SetTrigger("Slap");
-                    thisAnim = ObjectAnimState.ObjOut;
-                    currentWaitTime = waitTime;
+                    //StoreItemAnimation();
                 }
                 else if (Input.GetKeyDown(KeyCode.F))
                 {
-                    currentObject.GetComponent<Animator>().SetTrigger("KickOut");
-                    hand.GetComponent<Animator>().SetTrigger("Punch");
-                    thisAnim = ObjectAnimState.ObjOut;
-                    currentWaitTime = waitTime;
+                    //ThrowAwayItemAnimation();
                 }
-                else if (Input.GetKeyDown(KeyCode.J)) {
-                    int rRand = Random.Range(0, 4);
-                    print(rRand);
-                    if (rRand == 0)
-                        hand.GetComponent<Animator>().SetTrigger("Fold");
-                    else if (rRand == 1)
-                        hand.GetComponent<Animator>().SetTrigger("Fold1");
-                    else if (rRand == 2)
-                        hand.GetComponent<Animator>().SetTrigger("Fold2");
-                    else if (rRand == 3)
-                        hand.GetComponent<Animator>().SetTrigger("Fold3");
-                    currentWaitTime = waitTime;
+                else if (Input.GetKeyDown(KeyCode.J)) {     //=======I commented this section out -ALEX
+                    //int rRand = Random.Range(0, 4);
+                    //print(rRand);
+                    //if (rRand == 0)
+                    //    hand.GetComponent<Animator>().SetTrigger("Fold");
+                    //else if (rRand == 1)
+                    //    hand.GetComponent<Animator>().SetTrigger("Fold1");
+                    //else if (rRand == 2)
+                    //    hand.GetComponent<Animator>().SetTrigger("Fold2");
+                    //else if (rRand == 3)
+                    //    hand.GetComponent<Animator>().SetTrigger("Fold3");
+                    //currentWaitTime = waitTime;
 
-                    //give object model a rotation to rotate to
-                    to = rotations[Random.Range(0, rotations.Length)];
+                    ////give object model a rotation to rotate to
+                    //to = rotations[Random.Range(0, rotations.Length)];
                 }
             }
         }
@@ -72,6 +66,25 @@ public class GameManager : MonoBehaviour
         RotateModel();
         DecrementCurrentWaitTime();
     }
+
+    //======ALEX
+    public void StoreItemAnimation()
+    {
+        currentObject.GetComponent<Animator>().SetTrigger("FlyOut");
+        hand.GetComponent<Animator>().SetTrigger("Slap");
+        thisAnim = ObjectAnimState.ObjOut;
+        currentWaitTime = waitTime;
+    }
+
+    public void ThrowAwayItemAnimation()
+    {
+        currentObject.GetComponent<Animator>().SetTrigger("KickOut");
+        hand.GetComponent<Animator>().SetTrigger("Punch");
+        thisAnim = ObjectAnimState.ObjOut;
+        currentWaitTime = waitTime;
+    }
+
+    //======ALEX
 
     void RotateModel() {
         currentObjectModel.transform.rotation = Quaternion.Lerp(from.rotation, to.rotation, Time.time * speed);

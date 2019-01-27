@@ -5,11 +5,17 @@ using UnityEngine.UI;
 
 public class Item : MonoBehaviour
 {
+    private float thankYouPressDuration = 0f;
+
+    public bool solved = false;
     public float sparkJoy;
     public float sparkJoyDeviation;
     public Text backStory;
-    public GameObject preSolveModel;
-    public GameObject postSolveModel;
+    public float thankYouMinHold = 3f;
+    //public GameObject preSolveModel;
+    //public GameObject postSolveModel;
+
+
 
     public virtual bool CheckSolveConditions()
     {
@@ -19,12 +25,45 @@ public class Item : MonoBehaviour
 
     public virtual void Solve()
     {
+        solved = true;
         Debug.LogError("SOLVED!");
         //actions to execute on successful solve of item
     }
 
+    public void ThrownAway()
+    {
+
+    }
+
+    public void Thanked()
+    {
+
+    }
+
+    public void CheckThankYou()     //INCOMPLETE
+    {
+        if (Input.GetButton("ThankYou"))
+        {
+            thankYouPressDuration += Time.deltaTime;
+            Debug.Log("Thank You button pressed");
+
+            if (thankYouPressDuration >= thankYouMinHold)
+            {
+                Thanked();
+            }
+        }
+
+        else
+        {
+            thankYouPressDuration = 0f;
+        }
+
+    }
+
     void Update()
     {
+        CheckThankYou();
+
         if (CheckSolveConditions())
         {
             Solve();

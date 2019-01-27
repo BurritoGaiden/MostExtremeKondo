@@ -68,16 +68,25 @@ public class Cutscene : MonoBehaviour {
         nameText.SetActive(true);
         dialogueText.SetActive(true);
 
-        dM.StartDialogue(dialogue);
+        dM.StartDialogue(dialogue); //line 1
+        GetComponent<AudioSource>().PlayOneShot(audioClips[2]);
 
         yield return new WaitForSeconds(4);
 
-        dM.DisplayNextSentence();
+        dM.DisplayNextSentence(); // line 2
+        GetComponent<AudioSource>().PlayOneShot(audioClips[3]);
 
         yield return new WaitForSeconds(3);
 
-        dM.DisplayNextSentence();
+        dM.DisplayNextSentence(); // line 3
+        GetComponent<AudioSource>().PlayOneShot(audioClips[4]);
         theCamera.transform.position = camPos2.transform.position;
+
+        yield return new WaitForSeconds(3);
+
+        dM.DisplayNextSentence(); // line 4
+        GetComponent<AudioSource>().PlayOneShot(audioClips[5]);
+        //theCamera.transform.position = camPos2.transform.position;
 
         yield return new WaitForSeconds(3);
 

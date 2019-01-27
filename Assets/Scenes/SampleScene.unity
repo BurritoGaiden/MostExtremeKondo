@@ -252,8 +252,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   solved: 0
+  generateRandomSJValues: 0
   sparkJoy: 0
   sparkJoyDeviation: 0
+  sparkJoySlider: {fileID: 0}
   backStory: {fileID: 0}
   thankYouMinHold: 3
   solvePattern: 
@@ -687,8 +689,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   solved: 0
+  generateRandomSJValues: 0
   sparkJoy: 0
   sparkJoyDeviation: 0
+  sparkJoySlider: {fileID: 0}
   backStory: {fileID: 0}
   thankYouMinHold: 3
   solvePattern: 
@@ -1296,8 +1300,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   solved: 0
+  generateRandomSJValues: 0
   sparkJoy: 0
   sparkJoyDeviation: 0
+  sparkJoySlider: {fileID: 0}
   backStory: {fileID: 0}
   thankYouMinHold: 3
   solvePattern: 
@@ -1616,8 +1622,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   solved: 0
+  generateRandomSJValues: 0
   sparkJoy: 0
   sparkJoyDeviation: 0
+  sparkJoySlider: {fileID: 0}
   backStory: {fileID: 0}
   thankYouMinHold: 3
   solvePattern: 
@@ -1702,6 +1710,7 @@ GameObject:
   m_Component:
   - component: {fileID: 424245295}
   - component: {fileID: 424245294}
+  - component: {fileID: 424245296}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1754,6 +1763,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &424245296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 424245293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b8d25e668928e3488e00074fb11f70f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 100
+  hPSlider: {fileID: 0}
 --- !u!1 &429829650 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100002, guid: 9dd85ec2c0ed84c41b258188735468db, type: 3}
@@ -2193,8 +2215,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   solved: 0
+  generateRandomSJValues: 0
   sparkJoy: 0
   sparkJoyDeviation: 0
+  sparkJoySlider: {fileID: 0}
   backStory: {fileID: 0}
   thankYouMinHold: 3
   solvePattern: 
@@ -3439,6 +3463,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gMan: {fileID: 424245294}
+  hMan: {fileID: 424245296}
   allItems: []
 --- !u!1001 &935339113
 Prefab:
@@ -4089,8 +4114,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   solved: 0
+  generateRandomSJValues: 0
   sparkJoy: 0
   sparkJoyDeviation: 0
+  sparkJoySlider: {fileID: 0}
   backStory: {fileID: 0}
   thankYouMinHold: 3
   solvePattern: 
@@ -4252,8 +4279,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   solved: 0
+  generateRandomSJValues: 0
   sparkJoy: 0
   sparkJoyDeviation: 0
+  sparkJoySlider: {fileID: 0}
   backStory: {fileID: 0}
   thankYouMinHold: 3
   solvePattern: 
@@ -5823,8 +5852,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   solved: 0
+  generateRandomSJValues: 0
   sparkJoy: 0
   sparkJoyDeviation: 0
+  sparkJoySlider: {fileID: 0}
   backStory: {fileID: 0}
   thankYouMinHold: 3
   solvePattern: 

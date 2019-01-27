@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
         Shirt.ClothingStepped += StepProgress;
         Pants.ClothingStepped += StepProgress;
         Socks.ClothingStepped += StepProgress;
+        Book.ClothingStepped += StepProgress;
     }
 
     // Update is called once per frame

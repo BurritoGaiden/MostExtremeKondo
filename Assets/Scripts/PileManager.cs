@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PileManager : MonoBehaviour
 {
+    public GameManager gMan;
     public Item[] allItems;
 
     private Item currentItem;
@@ -34,5 +35,10 @@ public class PileManager : MonoBehaviour
         currentItem = allItems[i];
         currentItem.gameObject.SetActive(true);
         Debug.Log("The New Current Item is " + currentItem);
+    }
+
+    public void StartAnimation()
+    {
+        gMan.StoreItemAnimation();
     }
 }

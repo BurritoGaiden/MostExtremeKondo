@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Shirt : Clothing
 {
+    public delegate void SolveEvent();
+    public static event SolveEvent ShirtStepped;
+    public static event SolveEvent StoreShirt;
+
     private int step = 0;
     private bool leftFoldedFirst;
     private bool delay = false;
@@ -48,6 +52,7 @@ public class Shirt : Clothing
             {
                 step++;
                 Debug.Log("Success, move to step " + step);
+                ShirtStepped();
                 //load transition cloud puff
                 ActivateModel(1);    //load next model, LEFT ORIENTATION
                 //load success SFX puff
@@ -58,6 +63,7 @@ public class Shirt : Clothing
             {
                 step++;
                 Debug.Log("Success, move to step " + step);
+                ShirtStepped();
 
                 //load transition cloud puff
                 ActivateModel(2);//load next model, RIGHT ORIENTATION
@@ -74,6 +80,7 @@ public class Shirt : Clothing
             {
                 step = 0;   //return to beginning
                 Debug.Log("Player Mistake, return to step " + step);
+                
 
                 //load transition cloud puff
                 ActivateModel(step);    //load first model
@@ -90,6 +97,7 @@ public class Shirt : Clothing
             {
                 step++;
                 Debug.Log("Success, move to step " + step);
+                ShirtStepped();
                 //load transition cloud puff
                 ActivateModel(3);    //load next model, RIGHT ORIENTATION
                 //load success SFX puff
@@ -120,6 +128,7 @@ public class Shirt : Clothing
             {
                 step++;
                 Debug.Log("Success, move to step " + step);
+                ShirtStepped();
                 //load transition cloud puff
                 ActivateModel(4);    //load next model, LEFT ORIENTATION
                 //load success SFX puff
@@ -152,6 +161,7 @@ public class Shirt : Clothing
             {
                 step++;
                 Debug.Log("DOUBLE DOWN");
+                ShirtStepped();
                 //load transition cloud puff
                 ActivateModel(5);    //load next model, RIGHT ORIENTATION
                 //load success SFX puff

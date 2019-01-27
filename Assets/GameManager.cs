@@ -20,20 +20,17 @@ public class GameManager : MonoBehaviour
 
     public float remainingTime;
 
+    public void Start()
+    {
+        Shirt.ShirtStepped += StepProgress;
+    }
+
     // Update is called once per frame
     void Update()
     {
         if (thisAnim == ObjectAnimState.ObjOut) {
             if (currentWaitTime <= 0) {
-                animeVignette.GetComponent<Animator>().SetTrigger("StopFlash");
-                //give object model a rotation to rotate from and to
-                from = rotations[Random.Range(0, rotations.Length)];
-                currentObjectModel.transform.rotation = from.rotation;
-                to = rotations[Random.Range(0, rotations.Length)];
-
-                currentObject.GetComponent<Animator>().SetTrigger("FlyIn");
-                thisAnim = ObjectAnimState.ObjIn;
-                currentWaitTime = waitTime;
+                BringInItem();
             }
         }      
         else if (thisAnim == ObjectAnimState.ObjIn)
@@ -42,52 +39,65 @@ public class GameManager : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
-                    //StoreItemAnimation();
+                    StoreItem();
                 }
                 else if (Input.GetKeyDown(KeyCode.F))
                 {
-                    //ThrowAwayItemAnimation();
+                    ThrowAwayItem();
                 }
                 else if (Input.GetKeyDown(KeyCode.J)) {     //=======I commented this section out -ALEX
-                    //int rRand = Random.Range(0, 4);
-                    //print(rRand);
-                    //if (rRand == 0)
-                    //    hand.GetComponent<Animator>().SetTrigger("Fold");
-                    //else if (rRand == 1)
-                    //    hand.GetComponent<Animator>().SetTrigger("Fold1");
-                    //else if (rRand == 2)
-                    //    hand.GetComponent<Animator>().SetTrigger("Fold2");
-                    //else if (rRand == 3)
-                    //    hand.GetComponent<Animator>().SetTrigger("Fold3");
-                    //currentWaitTime = waitTime;
-
-                    ////give object model a rotation to rotate to
-                    //to = rotations[Random.Range(0, rotations.Length)];
+                    
                 }
             }
         }
-
-        remainingTime -= Time.deltaTime;
-
         RotateModel();
         DecrementCurrentWaitTime();
     }
 
     //======ALEX
-    public void StoreItemAnimation()
+    public void StoreItem()
     {
-        currentObject.GetComponent<Animator>().SetTrigger("FlyOut");
+        currentObject.GetComponent<Animator>().Play("Object_FlyOut");
         hand.GetComponent<Animator>().SetTrigger("Slap");
         thisAnim = ObjectAnimState.ObjOut;
         currentWaitTime = waitTime;
     }
 
-    public void ThrowAwayItemAnimation()
+    public void ThrowAwayItem()
     {
-        currentObject.GetComponent<Animator>().SetTrigger("KickOut");
+        currentObject.GetComponent<Animator>().Play("Object_KickOut");
         hand.GetComponent<Animator>().SetTrigger("Punch");
         thisAnim = ObjectAnimState.ObjOut;
         currentWaitTime = waitTime;
+    }
+
+    public void BringInItem() {
+        animeVignette.GetComponent<Animator>().SetTrigger("StopFlash");
+        //give object model a rotation to rotate from and to
+        from = rotations[Random.Range(0, rotations.Length)];
+        currentObjectModel.transform.rotation = from.rotation;
+        to = rotations[Random.Range(0, rotations.Length)];
+
+        currentObject.GetComponent<Animator>().Play("Object_FlyIn");
+        thisAnim = ObjectAnimState.ObjIn;
+        currentWaitTime = waitTime;
+    }
+
+    public void StepProgress() {
+        int rRand = Random.Range(0, 4);
+        print(rRand);
+        if (rRand == 0)
+            hand.GetComponent<Animator>().SetTrigger("Fold");
+        else if (rRand == 1)
+            hand.GetComponent<Animator>().SetTrigger("Fold1");
+        else if (rRand == 2)
+            hand.GetComponent<Animator>().SetTrigger("Fold2");
+        else if (rRand == 3)
+            hand.GetComponent<Animator>().SetTrigger("Fold3");
+        //currentWaitTime = waitTime;
+
+        //give object model a rotation to rotate to
+        to = rotations[Random.Range(0, rotations.Length)];
     }
 
     //======ALEX
@@ -102,10 +112,6 @@ public class GameManager : MonoBehaviour
             currentWaitTime -= Time.deltaTime;
         }
     }
-
-    void SetObjectToOut() {
-        currentObject.transform.position = new Vector3(-10, 1, 0);
-    }
 }
 
-public enum ObjectAnimState {ObjOut,ObjFlyIn,ObjIn,ObjFlyOut }
+public enum ObjectAnimState {ObjOut,ObjIn }

@@ -12,21 +12,24 @@ public class PileManager : MonoBehaviour
 
     private void Start()
     {
+        Item.ItemSolved += DoOnSolve; 
+
         allItems = GetComponentsInChildren<Item>(true);
         currentItem = allItems[0];
         currentItem.gameObject.SetActive(true);
 
         Debug.Log("Item Pile Size: " + allItems.Length);
         Debug.Log("The Starting Item is: " + currentItem);
+
+        gMan.BringInItem();
     }
 
-    private void Update()
+    void DoOnSolve()
     {
-        if (currentItem.solved)
-        {
-            LoadItem(incrementer);
-            incrementer++;
-        }
+        gMan.StoreItem();
+        LoadItem(incrementer);
+            
+        incrementer++;
     }
 
     public void LoadItem(int i)
@@ -35,10 +38,5 @@ public class PileManager : MonoBehaviour
         currentItem = allItems[i];
         currentItem.gameObject.SetActive(true);
         Debug.Log("The New Current Item is " + currentItem);
-    }
-
-    public void StartAnimation()
-    {
-        gMan.StoreItemAnimation();
     }
 }

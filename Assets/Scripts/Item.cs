@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class Item : MonoBehaviour
 {
+    public delegate void SolveEvent();
+    public static event SolveEvent ItemSolved;
+
     private float thankYouPressDuration = 0f;
 
     public bool solved = false;
@@ -27,6 +30,7 @@ public class Item : MonoBehaviour
     {
         solved = true;
         Debug.LogError("SOLVED!");
+        ItemSolved();
         //actions to execute on successful solve of item
     }
 

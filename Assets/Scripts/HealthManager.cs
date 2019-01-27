@@ -22,7 +22,8 @@ public class HealthManager : MonoBehaviour
     public void DealDamage(int i)
     {
         currentHP -= i;
-        hPSlider.value = currentHP;
+        Debug.Log("current health is: " + currentHP);
+        //hPSlider.value = currentHP;
 
         if (currentHP <= 0)
         {

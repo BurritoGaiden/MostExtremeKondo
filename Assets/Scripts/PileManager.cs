@@ -28,7 +28,7 @@ public class PileManager : MonoBehaviour
     void DoOnSolve()
     {
         gMan.StoreItem();   //animation
-        //hMan.DealDamage(currentItem.sparkJoy);  //deal damage to health manager
+        hMan.DealDamage(currentItem.sparkJoy);  //deal damage to health manager
         
             
         incrementer++;

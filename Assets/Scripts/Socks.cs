@@ -47,7 +47,7 @@ public class Socks : Clothing
             if (Input.GetAxis("Horizontal") > .9f && Input.GetAxis("HorizontalTurn") < -.9f)   //LEFT-IN & RIGHT-IN
             {
                 step++;
-                Debug.Log("Success, move to step " + step);
+                //Debug.Log("Success, move to step " + step);
                 //load transition cloud puff
                 ActivateModel(step);    //load next model, LEFT ORIENTATION
                 //load success SFX puff
@@ -63,7 +63,7 @@ public class Socks : Clothing
                      Input.GetAxis("VerticalTurn") < -.9f)          //RIGHT-DOWN
             {
                 step = 0;   //return to beginning
-                Debug.Log("Player Mistake, return to step " + step);
+                //Debug.Log("Player Mistake, return to step " + step);
 
                 //load transition cloud puff
                 ActivateModel(step);    //load first model
@@ -79,7 +79,7 @@ public class Socks : Clothing
             if (Input.GetAxis("Vertical") < -.9f && Input.GetAxis("VerticalTurn") < -.9f)   //DOUBLE-DOWN
             {
                 step++;
-                Debug.Log("DOUBLE DOWN");
+                //Debug.Log("DOUBLE DOWN");
                 //load transition cloud puff
                 ActivateModel(step);    //load next model, RIGHT ORIENTATION
                 //load success SFX puff
@@ -96,7 +96,7 @@ public class Socks : Clothing
                      //Input.GetAxis("VerticalTurn") < -.9f)      //RIGHT-DOWN
             {
                 step = 0;   //return to beginning
-                Debug.Log("Player Mistake, return to step " + step);
+                //Debug.Log("Player Mistake, return to step " + step);
                 //load transition cloud puff
                 ActivateModel(step);    //load first model
                 //load fail SFX buzz

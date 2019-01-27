@@ -22,7 +22,7 @@ public class Item : MonoBehaviour
     //public GameObject preSolveModel;
     //public GameObject postSolveModel;
 
-    private void Start()
+    private void Awake()
     {
         if (generateRandomSJValues)
         {
@@ -32,6 +32,7 @@ public class Item : MonoBehaviour
 
     public void GenRandomSJ()
     {
+        Debug.Log("GenRandomSJ called");
         sparkJoy = Mathf.RoundToInt(Random.Range(-10f, 10f));
         sparkJoyDeviation = Mathf.RoundToInt(Random.Range(0f, 3f));
     }

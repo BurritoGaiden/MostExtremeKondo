@@ -47,7 +47,7 @@ public class Pants : Clothing
             if (Input.GetAxis("Horizontal") > .9f)   //folds left side first        LEFT-IN
             {
                 step++;
-                Debug.Log("Success, move to step " + step);
+                //Debug.Log("Success, move to step " + step);
                 //load transition cloud puff
                 ActivateModel(1);    //load next model, LEFT ORIENTATION
                 //load success SFX puff
@@ -57,7 +57,7 @@ public class Pants : Clothing
             else if (Input.GetAxis("HorizontalTurn") < -.9f) //folds right side first   RIGHT-IN
             {
                 step++;
-                Debug.Log("Success, move to step " + step);
+                //Debug.Log("Success, move to step " + step);
 
                 //load transition cloud puff
                 ActivateModel(2);//load next model, RIGHT ORIENTATION
@@ -74,7 +74,7 @@ public class Pants : Clothing
                      Input.GetAxis("VerticalTurn") < -.9f)          //RIGHT-DOWN
             {
                 step = 0;   //return to beginning
-                Debug.Log("Player Mistake, return to step " + step);
+                //Debug.Log("Player Mistake, return to step " + step);
 
                 //load transition cloud puff
                 ActivateModel(step);    //load first model
@@ -90,7 +90,7 @@ public class Pants : Clothing
             if (Input.GetAxis("VerticalTurn") > .9f && Input.GetAxis("Vertical") > .9f) //DOUBLE-UP
             {
                 step++;
-                Debug.Log("Success, move to step " + step);
+                //Debug.Log("Success, move to step " + step);
                 //load transition cloud puff
                 ActivateModel(3);    //load next model, RIGHT ORIENTATION
                 //load success SFX puff
@@ -107,7 +107,7 @@ public class Pants : Clothing
                      Input.GetAxis("VerticalTurn") < -.9f)      //RIGHT-DOWN
             {
                 step = 0;   //return to beginning
-                Debug.Log("Player Mistake, return to step " + step);
+                //Debug.Log("Player Mistake, return to step " + step);
                 //load transition cloud puff
                 ActivateModel(step);    //load first model
                 //load fail SFX buzz
@@ -122,7 +122,7 @@ public class Pants : Clothing
             if (Input.GetAxis("Vertical") < -.9f && Input.GetAxis("VerticalTurn") < -.9f)   //DOUBLE-DOWN
             {
                 step++;
-                Debug.Log("DOUBLE DOWN");
+                //Debug.Log("DOUBLE DOWN");
                 //load transition cloud puff
                 ActivateModel(5);    //load next model, RIGHT ORIENTATION
                 //load success SFX puff
@@ -139,7 +139,7 @@ public class Pants : Clothing
                      //Input.GetAxis("VerticalTurn") < -.9f)      //RIGHT-DOWN
             {
                 step = 0;   //return to beginning
-                Debug.Log("Player Mistake, return to step " + step);
+                //Debug.Log("Player Mistake, return to step " + step);
                 //load transition cloud puff
                 ActivateModel(step);    //load first model
                 //load fail SFX buzz

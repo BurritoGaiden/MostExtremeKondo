@@ -7,8 +7,9 @@ public class Item : MonoBehaviour
 {
     public delegate void SolveEvent();
     public static event SolveEvent ItemSolved;
+    public static event SolveEvent ItemThrownAway;
 
-    private float thankYouPressDuration = 0f;
+    //private float thankYouPressDuration = 0f;
 
     public bool solved = false;
 
@@ -51,33 +52,39 @@ public class Item : MonoBehaviour
         //actions to execute on successful solve of item
     }
 
-    public void ThrownAway()
-    {
+    //public void ThrownAway()
+    //{
 
-    }
+    //}
 
-    public void Thanked()
-    {
+    //public void Thanked()
+    //{
 
-    }
+    //}
 
     public void CheckThankYou()     //INCOMPLETE
     {
-        if (Input.GetButton("ThankYou"))
-        {
-            thankYouPressDuration += Time.deltaTime;
-            Debug.Log("Thank You button pressed");
 
-            if (thankYouPressDuration >= thankYouMinHold)
-            {
-                Thanked();
-            }
+        if (Input.GetButtonDown("ThankYou"))
+        {
+            ItemThrownAway();
         }
 
-        else
-        {
-            thankYouPressDuration = 0f;
-        }
+        //if (Input.GetButton("ThankYou"))
+        //{
+        //    thankYouPressDuration += Time.deltaTime;
+        //    Debug.Log("Thank You button pressed");
+
+        //    if (thankYouPressDuration >= thankYouMinHold)
+        //    {
+        //        Thanked();
+        //    }
+        //}
+
+        //else
+        //{
+        //    thankYouPressDuration = 0f;
+        //}
 
     }
 

@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pants : Clothing
+public class Book : Item
 {
+    public delegate void SolveEvent();
     public static event SolveEvent ClothingStepped;
+    //public static event SolveEvent StoreShirt;
 
     private int step = 0;
     private bool leftFoldedFirst;
@@ -46,34 +48,22 @@ public class Pants : Clothing
         if (step == 0 && !delay)
         {
 
-            if (Input.GetAxis("Horizontal") > .9f)   //folds left side first        LEFT-IN
+            if (Input.GetAxis("Horizontal") < -.9f && Input.GetAxis("HorizontalTurn") > .9f)   //LEFT-OUT & RIGHT-OUT
             {
                 step++;
                 ClothingStepped();
                 //Debug.Log("Success, move to step " + step);
                 //load transition cloud puff
-                ActivateModel(1);    //load next model, LEFT ORIENTATION
-                //load success SFX puff
-
-            }
-
-            else if (Input.GetAxis("HorizontalTurn") < -.9f) //folds right side first   RIGHT-IN
-            {
-                step++;
-                ClothingStepped();
-                //Debug.Log("Success, move to step " + step);
-
-                //load transition cloud puff
-                ActivateModel(2);//load next model, RIGHT ORIENTATION
+                ActivateModel(step);    //load next model, LEFT ORIENTATION
                 //load success SFX puff
 
             }
 
             //USER INPUTS WRONG 
-            else if (Input.GetAxis("Horizontal") < -.9f ||          //LEFT-OUT
+            else if (Input.GetAxis("Horizontal") > .9f ||          //LEFT-IN
                      Input.GetAxis("Vertical") > .9f ||             //LEFT-UP
                      Input.GetAxis("Vertical") < -.9f ||            //LEFT-DOWN
-                     Input.GetAxis("HorizontalTurn") > .9f ||       //RIGHT-OUT
+                     Input.GetAxis("HorizontalTurn") < -.9f ||       //RIGHT-IN
                      Input.GetAxis("VerticalTurn") > .9f ||         //RIGHT-UP
                      Input.GetAxis("VerticalTurn") < -.9f)          //RIGHT-DOWN
             {
@@ -90,25 +80,25 @@ public class Pants : Clothing
 
         if (step == 1 && !delay)
         {
-
-            if (Input.GetAxis("VerticalTurn") > .9f && Input.GetAxis("Vertical") > .9f) //DOUBLE-UP
+            //Debug.Log(Input.GetAxis("Vertical"));
+            if (Input.GetAxis("HorizontalTurn") < -.9f)   //RIGHT-IN
             {
                 step++;
                 ClothingStepped();
-                //Debug.Log("Success, move to step " + step);
+                //Debug.Log("DOUBLE DOWN");
                 //load transition cloud puff
-                ActivateModel(3);    //load next model, RIGHT ORIENTATION
+                ActivateModel(step);    //load next model, RIGHT ORIENTATION
                 //load success SFX puff
             }
 
             //USER INPUTS WRONG 
             else if (Input.GetAxis("Horizontal") < -.9f ||      //LEFT-OUT
                      Input.GetAxis("Horizontal") > .9f ||       //LEFT-IN
-                     //Input.GetAxis("Vertical") > .9f ||         //LEFT-UP
+                     Input.GetAxis("Vertical") > .9f ||         //LEFT-UP
                      Input.GetAxis("Vertical") < -.9f ||        //LEFT-DOWN
                      Input.GetAxis("HorizontalTurn") > .9f ||   //RIGHT-OUT
-                     Input.GetAxis("HorizontalTurn") < -.9f ||  //RIGHT-IN
-                     //Input.GetAxis("VerticalTurn") > .9f ||     //RIGHT-UP
+                     //Input.GetAxis("HorizontalTurn") < -.9f ||  //RIGHT-IN
+                     Input.GetAxis("VerticalTurn") > .9f ||      //RIGHT-UP
                      Input.GetAxis("VerticalTurn") < -.9f)      //RIGHT-DOWN
             {
                 step = 0;   //return to beginning
@@ -123,39 +113,6 @@ public class Pants : Clothing
 
         if (step == 2 && !delay)
         {
-            //Debug.Log(Input.GetAxis("Vertical"));
-            if (Input.GetAxis("Vertical") < -.9f && Input.GetAxis("VerticalTurn") < -.9f)   //DOUBLE-DOWN
-            {
-                step++;
-                ClothingStepped();
-                //Debug.Log("DOUBLE DOWN");
-                //load transition cloud puff
-                ActivateModel(5);    //load next model, RIGHT ORIENTATION
-                //load success SFX puff
-            }
-
-            //USER INPUTS WRONG 
-            else if (Input.GetAxis("Horizontal") < -.9f ||      //LEFT-OUT
-                     Input.GetAxis("Horizontal") > .9f ||       //LEFT-IN
-                     Input.GetAxis("Vertical") > .9f ||         //LEFT-UP
-                     //Input.GetAxis("Vertical") < -.9f ||        //LEFT-DOWN
-                     Input.GetAxis("HorizontalTurn") > .9f ||   //RIGHT-OUT
-                     Input.GetAxis("HorizontalTurn") < -.9f ||  //RIGHT-IN
-                     Input.GetAxis("VerticalTurn") > .9f)       //RIGHT-UP
-                     //Input.GetAxis("VerticalTurn") < -.9f)      //RIGHT-DOWN
-            {
-                step = 0;   //return to beginning
-                //Debug.Log("Player Mistake, return to step " + step);
-                //load transition cloud puff
-                ActivateModel(step);    //load first model
-                //load fail SFX buzz
-            }
-
-            StartCoroutine(InputDelay());
-        }
-
-        if (step == 3 && !delay)
-        {
             if (Input.GetButtonDown("Submit"))
             {
                 //StoreShirt();   //is this necessary?
@@ -166,6 +123,5 @@ public class Pants : Clothing
         return false;
 
     }
-
 
 }

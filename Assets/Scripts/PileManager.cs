@@ -13,7 +13,8 @@ public class PileManager : MonoBehaviour
 
     private void Start()
     {
-        Item.ItemSolved += DoOnSolve; 
+        Item.ItemSolved += DoOnSolve;
+        Item.ItemThrownAway += DoOnThrowAway;
 
         allItems = GetComponentsInChildren<Item>(true);
         currentItem = allItems[0];
@@ -33,6 +34,15 @@ public class PileManager : MonoBehaviour
             
         incrementer++;
 
+        LoadItem(incrementer);
+    }
+
+    void DoOnThrowAway()
+    {
+        gMan.ThrowAwayItem();
+        hMan.DealDamage(currentItem.sparkJoy);
+
+        incrementer++;
         LoadItem(incrementer);
     }
 

@@ -22,7 +22,10 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
-        Shirt.ShirtStepped += StepProgress;
+        Shirt.ClothingStepped += StepProgress;
+        Pants.ClothingStepped += StepProgress;
+        Socks.ClothingStepped += StepProgress;
+        Book.ClothingStepped += StepProgress;
     }
 
     // Update is called once per frame

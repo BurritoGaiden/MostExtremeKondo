@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Socks : Clothing
 {
+    public static event SolveEvent ClothingStepped;
+
     private int step = 0;
     private bool leftFoldedFirst;
     private bool delay = false;
@@ -47,6 +49,7 @@ public class Socks : Clothing
             if (Input.GetAxis("Horizontal") > .9f && Input.GetAxis("HorizontalTurn") < -.9f)   //LEFT-IN & RIGHT-IN
             {
                 step++;
+                ClothingStepped();
                 //Debug.Log("Success, move to step " + step);
                 //load transition cloud puff
                 ActivateModel(step);    //load next model, LEFT ORIENTATION
@@ -79,6 +82,7 @@ public class Socks : Clothing
             if (Input.GetAxis("Vertical") < -.9f && Input.GetAxis("VerticalTurn") < -.9f)   //DOUBLE-DOWN
             {
                 step++;
+                ClothingStepped();
                 //Debug.Log("DOUBLE DOWN");
                 //load transition cloud puff
                 ActivateModel(step);    //load next model, RIGHT ORIENTATION

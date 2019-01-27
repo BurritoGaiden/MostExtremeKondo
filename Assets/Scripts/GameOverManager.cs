@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameOverManager : MonoBehaviour
 {
@@ -13,6 +14,9 @@ public class GameOverManager : MonoBehaviour
     private HealthManager hMan;
     private TimerManager tMan;
 
+    public Image Scoreboard;
+    public Image ScoreFader;
+    public Text scoreReadout;
 
     void Start()
     {
@@ -30,12 +34,27 @@ public class GameOverManager : MonoBehaviour
     {
         if (canRestart)
         {
-            if (Input.GetButtonDown("StartButton"))     //check if can restart
+            if (Input.GetButtonDown("StartButton") || Input.GetKeyDown(KeyCode.U))     //check if can restart
             {
                 SceneManager.LoadScene(sceneIndexToRestart, LoadSceneMode.Single);
+                //Application.LoadLevel(Application.loadedLevel);
             }
         }
+
+        //if (GameOverCall()) {
+
+        //s}
+        if (pMan.CheckForSuccess() && runOnce == false)
+        {
+            DoOnWin();
+            Scoreboard.GetComponent<Animator>().Play("Scoreboard_SlideIn");
+            ScoreFader.GetComponent<Animator>().Play("ScoreFader_FadeIn");
+            StartCoroutine(ReadOutScore());
+            runOnce = true;
+        }
     }
+
+    public bool runOnce;
 
     public void DoOnTimeUp()
     {
@@ -44,15 +63,34 @@ public class GameOverManager : MonoBehaviour
         //EVALUATE IF WON OR LOSS
         if (hMan.isAlive())     //checks remaining HP
         {
-            if (pMan.CheckPileRequirements())           //compare pile requirements
+            if (pMan.CheckPileRequirements() && runOnce == false)           //compare pile requirements
             {
                 //WIN
                 DoOnWin();
+                Scoreboard.GetComponent<Animator>().Play("Scoreboard_SlideIn");
+                ScoreFader.GetComponent<Animator>().Play("ScoreFader_FadeIn");
+                StartCoroutine(ReadOutScore());
+                runOnce = true;
             }
+
             //LOSS
-            DoOnLoss();
+            if (runOnce == false)
+            {
+                DoOnLoss();
+                Scoreboard.GetComponent<Animator>().Play("Scoreboard_SlideIn");
+                ScoreFader.GetComponent<Animator>().Play("ScoreFader_FadeIn");
+                StartCoroutine(ReadOutScore());
+                runOnce = true;
+            }
         }
-        DoOnLoss();
+        if (runOnce == false)
+        {
+            DoOnLoss();
+            Scoreboard.GetComponent<Animator>().Play("Scoreboard_SlideIn");
+            ScoreFader.GetComponent<Animator>().Play("ScoreFader_FadeIn");
+            StartCoroutine(ReadOutScore());
+            runOnce = true;
+        }
     }
 
     public void DoOnWin()
@@ -73,6 +111,24 @@ public class GameOverManager : MonoBehaviour
         canRestart = true;
 
         Debug.Log("I'M SORRY :'( YOU DIED OF UNHAPPINESS. PLEASE TRY AGaIN. PRESS 'START' to CONTINUE");
+    }
+
+    public IEnumerator ReadOutScore() {
+        string readout = "";
+        readout += ". ";
+        scoreReadout.text = readout;
+        yield return new WaitForSeconds(3);
+        readout += ". ";
+        scoreReadout.text = readout;
+        yield return new WaitForSeconds(1);
+        readout += ". ";
+        scoreReadout.text = readout;
+        yield return new WaitForSeconds(1);
+        readout += "\n\n YOUR SCORE: X";
+        scoreReadout.text = readout;
+        yield return new WaitForSeconds(1);
+        readout += "\n Press Start to Restart!!!";
+        scoreReadout.text = readout;
     }
 
 }

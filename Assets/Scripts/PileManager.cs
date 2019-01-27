@@ -103,13 +103,15 @@ public class PileManager : MonoBehaviour
 
     private void Update()
     {
-        CheckForSuccess();    
+        //CheckForSuccess();    
     }
 
-    public void CheckForSuccess() {
-        if (sortedObjectSuccessThreshold <= 0 && tMan.timeLeft > 0) {
+    public bool CheckForSuccess() {
+        if (sortedObjectSuccessThreshold <= 0) {
             print("success!");
+            return true;
         }
+        return false;
     }
 
     public void DoOnSuccess() {

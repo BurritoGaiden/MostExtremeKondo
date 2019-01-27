@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -32,12 +33,34 @@ public class GameManager : MonoBehaviour
     public GameObject conLeft;
     public GameObject conRight;
 
+
+
     public void Start()
     {
         Shirt.ClothingStepped += StepProgress;
         Pants.ClothingStepped += StepProgress;
         Socks.ClothingStepped += StepProgress;
         Book.ClothingStepped += StepProgress;
+
+        
+    }
+
+
+    //    private void onlevel
+    //      currentObject = GameObject.Find("CurrentObject");
+    //    hand = GameObject.Find("Hand");
+    //}
+
+    private void OnEnable()
+    {
+        currentObject = GameObject.Find("CurrentObject");
+        hand = GameObject.Find("Hand");
+    }
+
+    private void Awake()
+    {
+        currentObject = GameObject.Find("CurrentObject");
+        hand = GameObject.Find("Hand");
     }
 
     // Update is called once per frame
@@ -72,8 +95,9 @@ public class GameManager : MonoBehaviour
     //======ALEX
     public void StoreItem()
     {
+        //if(currentObject != null)
         currentObject.GetComponent<Animator>().Play("Object_FlyOut");
-        hand.GetComponent<Animator>().Play("Hand_Slap");
+        //GameObject.Find("Hand").GetComponent<Animator>().Play("Hand_Slap");
         GiveRandomPitch(1f, 2.5f);
         GetComponent<AudioSource>().PlayOneShot(audioClips[0]);
         jetSetSource.pitch = 1;
@@ -112,10 +136,19 @@ public class GameManager : MonoBehaviour
         GetComponent<AudioSource>().pitch = Random.Range(min, max);
     }
 
+    //public void GetAllReferences() {
+    //        public GameObject theCamera;
+   //hand = GameObject.Find("Hand");
+    ///    theCamera
+    //}
+
     public void StepProgress() {
+   // GetAllReferences();
+
         int rRand = Random.Range(0, 4);
         print(rRand);
-        if (rRand == 0) { 
+        if (rRand == 0) {
+            //GameObject.Find("Hand").GetComponent<Animator>().Play("Hand_Fold");
             hand.GetComponent<Animator>().Play("Hand_Fold");
             theCamera.GetComponent<Animator>().Play("Camera_LeftMovement");
             GiveRandomPitch(1f, 2.5f);
@@ -124,6 +157,7 @@ public class GameManager : MonoBehaviour
             jetSetSource.PlayOneShot(audioClips[7]);
         }
         else if (rRand == 1) {
+            //GameObject.Find("Hand").GetComponent<Animator>().Play("Hand_Fold1");
             hand.GetComponent<Animator>().Play("Hand_Fold1");
             theCamera.GetComponent<Animator>().Play("Camera_UpMovement");
             GiveRandomPitch(1f, 2.5f);
@@ -132,6 +166,7 @@ public class GameManager : MonoBehaviour
             jetSetSource.PlayOneShot(audioClips[7]);
         }
         else if (rRand == 2) {
+            //GameObject.Find("Hand").GetComponent<Animator>().Play("Hand_Fold2");
             hand.GetComponent<Animator>().Play("Hand_Fold2");
             theCamera.GetComponent<Animator>().Play("Camera_DownMovement");
             GiveRandomPitch(1f, 2.5f);
@@ -140,6 +175,7 @@ public class GameManager : MonoBehaviour
             jetSetSource.PlayOneShot(audioClips[7]);
         }
         else if (rRand == 3) {
+            //GameObject.Find("Hand").GetComponent<Animator>().Play("Hand_Fold3");
             hand.GetComponent<Animator>().Play("Hand_Fold3");
             theCamera.GetComponent<Animator>().Play("Camera_RightMovement");
             GiveRandomPitch(1f, 2.5f);

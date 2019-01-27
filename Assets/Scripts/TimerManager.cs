@@ -11,7 +11,7 @@ public class TimerManager : MonoBehaviour
     public delegate void TimeExpireEvent();
     public static event TimeExpireEvent TimeExpired;
 
-    private float timeLeft;
+    public float timeLeft;
     private bool stopTime = false;
 
     private void Start()
@@ -30,7 +30,7 @@ public class TimerManager : MonoBehaviour
             int seconds = Mathf.FloorToInt(timeLeft - minutes * 60);
             string niceTime = string.Format("{0:0}:{1:00}", minutes, seconds);
 
-            //timerText.text = niceTime;
+            timerText.text = niceTime;
         }
 
         else if (timeLeft < 0 && !stopTime)

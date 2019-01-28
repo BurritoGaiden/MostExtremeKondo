@@ -58,12 +58,12 @@ public class Shirt : Clothing
     public override bool CheckSolveConditions()
     {
         //rotate the object
-        if (Input.GetKey(KeyCode.T))
-            yaw += 1 * 3;
-        if (Input.GetKey(KeyCode.Y))
-            yaw += -1 * 3;
-        currentRotation = Vector3.SmoothDamp(currentRotation, new Vector3(0, yaw), ref rotationSmoothVelocity, rotationSmoothTime);
-        transform.eulerAngles = currentRotation;
+        //if (Input.GetKey(KeyCode.T))
+        //    yaw += 1 * 3;
+        //if (Input.GetKey(KeyCode.Y))
+        //    yaw += -1 * 3;
+        //currentRotation = Vector3.SmoothDamp(currentRotation, new Vector3(0, yaw), ref rotationSmoothVelocity, rotationSmoothTime);
+        //transform.eulerAngles = currentRotation;
 
         //examine
         //get the amount of values on this object

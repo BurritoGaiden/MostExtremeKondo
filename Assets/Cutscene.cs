@@ -100,6 +100,6 @@ public class Cutscene : MonoBehaviour {
         yield return new WaitForSeconds(3);
 
         //load next level
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("TestWorkingGameplayScene");
     }
 }
